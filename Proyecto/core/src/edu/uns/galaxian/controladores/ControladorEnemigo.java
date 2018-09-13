@@ -39,7 +39,7 @@ public class ControladorEnemigo implements ControladorEntidad {
     
     private int getPosX(int cantidadNaves, int j) {
     	int medio = Gdx.graphics.getWidth() / 2;
-    	int margen = 10;
+    	int margen = 15;
     	int resultado = 0;
     	int espacioOcupado;
     	int espacioSobrante;
@@ -63,7 +63,7 @@ public class ControladorEnemigo implements ControladorEntidad {
     
     public int getPosY(int numeroFila) {
     	int margen = 0;
-    	return Gdx.graphics.getHeight() - (numeroFila+1)*Enemigo.getAltoMaxEnemigo() - margen;
+    	return (int) (Gdx.graphics.getHeight() - ((numeroFila+1)*Enemigo.getAltoMaxEnemigo()*1.2) - margen);
     }
 
     public Vector2 getPosicionJugador(){

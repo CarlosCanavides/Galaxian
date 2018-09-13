@@ -24,18 +24,21 @@ import org.json.JSONObject;
 
 public class Jugador extends EntidadColisionable {
 
-	private static final int TAMANIO_NAVE = 64;
+	private static final int TAMANIO_NAVE = 32;
+	private static final long CADENCIA_DISPARO = 400;
  
 	private ArmaJugador arma;
 	private Escudo escudo;
 	private ProcesadorInput input;
 	private int velocidadMaxima;
 	private Nivel nivel;
+	private long tiempoUltimoDisparo;
 	private ControladorDisparo controladorDisparos;  // TODO por ahora lo hacemos asi para dibujar el disparo
 	
 	public Jugador(int xPos, int yPos, int tamano, JSONObject config, Nivel nivel){
-	    super(xPos, yPos, tamano, tamano, config.getInt(GameDataKeys.JUGADOR_VIDA_MAXIMA.getKey()));
+	    super(xPos, yPos, TAMANIO_NAVE, TAMANIO_NAVE, config.getInt(GameDataKeys.JUGADOR_VIDA_MAXIMA.getKey()));
 		this.nivel = nivel;
+		this.tiempoUltimoDisparo = System.currentTimeMillis() - CADENCIA_DISPARO;
 		
 		// TODO Utilizar el objeto config para setear vida, velocidad maxima, arma, escudo, etc.
 		
@@ -98,12 +101,21 @@ public class Jugador extends EntidadColisionable {
 	// Implementacion de metodos abstractos
 	
 	public void actualizar() {
-		posicion.add(velocidadMaxima * input.getXAxis() * Gdx.graphics.getDeltaTime(), 0);
-		if(input.sePresionoDisparar()) {
+		
+		// Actualizar posicion
+		float posNueva = (posicion.x + (velocidadMaxima * input.getXAxis() * Gdx.graphics.getDeltaTime()));
+		float anchoTextura = getAncho()/2; 
+		if(posNueva - anchoTextura >= 0 && posNueva + anchoTextura < Gdx.graphics.getWidth()) {
+			posicion.set(posNueva, posicion.y);
+		}	
+		
+		// Verificar disparo
+		if(input.sePresionoDisparar() && (System.currentTimeMillis() - tiempoUltimoDisparo) > CADENCIA_DISPARO) {
 			List<Disparo> disparos = arma.disparar(posicion.x, posicion.y, new Vector2(0,1));
 			for(Disparo d : disparos) {
 				controladorDisparos.agregarDisparo(d);
 			}
+			tiempoUltimoDisparo = System.currentTimeMillis();
 		}
 	}
 	

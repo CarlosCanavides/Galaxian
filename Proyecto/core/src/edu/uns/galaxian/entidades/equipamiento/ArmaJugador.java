@@ -15,7 +15,7 @@ import edu.uns.galaxian.entidades.inanimadas.DisparoJugador;
 public class ArmaJugador implements Arma {
 	
 	private ArmaEspecial arma;
-	private static Texture texturaDisparo = new Texture(Gdx.files.internal("disparos/laserBlue01.png"));
+	private static Texture texturaDisparo = new Texture(Gdx.files.internal("disparos/laserGreen11.png"));
 	
 	/**
 	 * Crea una arma especifica para el jugador en base a un arma especial ,previamente elegida.
@@ -24,14 +24,14 @@ public class ArmaJugador implements Arma {
 	public ArmaJugador(ArmaEspecial gun) {
 		arma = gun;
 		Disparo sh = arma.getDisparo();
-		Disparo dg = new DisparoJugador(0,0,30,15,20,20,80, texturaDisparo);
+		Disparo dg = new DisparoJugador(0,0,15,5,20,20,170, texturaDisparo);
 		dg.setDireccion(new Vector2(0,1));
 		arma.setDisparo(dg);
 		// Se asegura que el arma especial tenga el tipo de disparo correcto.
 	}
 
 	public List<Disparo> disparar(float xPos, float yPos, Vector2 direccion) {
-		return arma.disparar(xPos,yPos,direccion);
+		return arma.disparar(xPos,yPos+(yPos/2),direccion);
 	}
 
 }

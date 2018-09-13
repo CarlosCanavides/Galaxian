@@ -19,7 +19,7 @@ public class ArmaComun extends ArmaEspecial {
 	 * Crea un arma con disparo doble; por defecto el tipo de Disparo sera comun (ni DisparoEnemigo, ni DisparoJugador).
 	 */
 	public ArmaComun() {
-		disparo = new Disparo(0,0,10,10,10,damageDisparo,velocidad,texturaDisparo);  // TODO inicializacion por defecto por ahora
+		disparo = new Disparo(0,0,3,2,10,damageDisparo,velocidad,texturaDisparo);  // TODO inicializacion por defecto por ahora
 	}
 	
 	public List<Disparo> disparar(float xPos, float yPos, Vector2 direccion) {

@@ -13,8 +13,8 @@ import edu.uns.galaxian.controladores.ControladorEnemigo;
 public class Enemigo extends EntidadAutonoma{
 	
 	// TODO El atributo ancho y alto varia de acuerdo a el tipo de enemigo.
-	private static final int ANCHO_MAX = 64;
-	private static final int ALTO_MAX = 64;
+	private static final int ANCHO_MAX = 32;
+	private static final int ALTO_MAX = 32;
 	
 	private Texture textura;
 
@@ -23,7 +23,7 @@ public class Enemigo extends EntidadAutonoma{
 
     public Enemigo(int xPos, int yPos, int vidaMaxima) {
         super(xPos, yPos, ALTO_MAX, ANCHO_MAX, vidaMaxima);
-        this.textura = new Texture(Gdx.files.internal("enemigos/enemyBlack2.png"));
+        this.textura = new Texture(Gdx.files.internal("enemigos/enemyRed1.png"));
     }
 
     /**

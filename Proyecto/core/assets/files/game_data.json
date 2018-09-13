@@ -10,12 +10,19 @@
     "controladores": {
       "controladorEnemigo": {
         "formacion": [
+	  [
+	    "armado",
+	    "armado",
+	    "armado"
+	  ],
           [
             "kamikaze",
             "kamikaze",
             "armado",
             "kamikaze",
-            "kamikaze"
+            "kamikaze",
+	    "armado",
+	    "armado"
           ],
           [
             "armado",
@@ -23,12 +30,17 @@
             "armado",
             "kamikaze",
             "armado",
-            "kamikaze"
+            "kamikaze",
+	    "armado",
+	    "kamikaze"
           ],
           [
             "armado",
             "armado",
             "armado",
+            "armado",
+            "armado",
+	    "armado",
             "armado",
             "armado",
             "armado"
