@@ -4,8 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+import edu.uns.galaxian.controladores.ControladorDisparo;
 import edu.uns.galaxian.controladores.ControladorEnemigo;
 import edu.uns.galaxian.controladores.ControladorEntidad;
+import edu.uns.galaxian.entidades.jugador.InputKeyboard;
 import edu.uns.galaxian.entidades.jugador.Jugador;
 import edu.uns.galaxian.escenario.Background;
 import edu.uns.galaxian.juego.keys.GameDataKeys;
@@ -30,6 +33,7 @@ public class Nivel extends ScreenAdapter {
         // Inicializar jugador
         JSONObject configJugador = configNivel.getJSONObject(GameDataKeys.NIVEL_JUGADOR.getKey());
         jugador = new Jugador( Gdx.graphics.getWidth()/2, 60, 64, configJugador, this);
+        jugador.setProcesadorInput(new InputKeyboard());
 
         // Inicializar escenario
         background = new Background();
@@ -37,6 +41,10 @@ public class Nivel extends ScreenAdapter {
         // Inicializar controladores
         JSONObject configControladores = configNivel.getJSONObject(GameDataKeys.NIVEL_CONTROLADORES.getKey());
         inicializarControladores(jugador, configControladores);
+        
+        ControladorDisparo nuevo = new ControladorDisparo();
+        controladores.add(nuevo);
+        jugador.setControlador(nuevo);
     }
 
 
@@ -58,9 +66,10 @@ public class Nivel extends ScreenAdapter {
             controlador.actualizarEstado();
             controlador.dibujar(batch);
         }
-
-        // Dibujar jugador
+        
+     // Dibujar jugador
         jugador.dibujar(batch);
+        jugador.actualizar();          // TODO verificar que es el lugar indicado
 
         // Finalizar proceso de dibujado
         batch.end();

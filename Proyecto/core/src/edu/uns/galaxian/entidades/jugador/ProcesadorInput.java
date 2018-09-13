@@ -3,10 +3,10 @@ package edu.uns.galaxian.entidades.jugador;
 public interface ProcesadorInput {
 
 	/*
-	 * Devuelve la posicion del eje X
-	 * @return posicion eje X
+	 * Devuelve 1 si se presiono LEFT, devuelve -1 si se presiono RIGHT
+	 * @return Direccion en la que debe moverse el jugador
 	 */
-	public float getXAxis();
+	public int getXAxis();
 	
 	/*
 	 * Devuelve si se acciono la tecla disparar

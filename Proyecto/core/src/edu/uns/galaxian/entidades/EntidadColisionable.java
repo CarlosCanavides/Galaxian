@@ -3,12 +3,12 @@ import edu.uns.galaxian.colision.Colisionable;
 
 public abstract class EntidadColisionable extends Entidad implements Colisionable{
 
-	private int alto;
-	private int ancho;
-	private int vidaActual;
-	private int vidaMaxima;
+	protected float alto;
+	protected float ancho;
+	protected int vidaActual;
+	protected int vidaMaxima;
 
-	public EntidadColisionable(int xPos, int yPos, int alto, int ancho, int vidaMaxima){
+	public EntidadColisionable(float xPos, float yPos, float alto, float ancho, int vidaMaxima){
 		super(xPos, yPos);
 		this.alto = alto;
 		this.ancho = ancho;
@@ -20,7 +20,7 @@ public abstract class EntidadColisionable extends Entidad implements Colisionabl
 	 * Devuelve la altura de la entidad en pixeles.
 	 * @return Altura de la entidad en pixeles.
 	 */
-	public int getAlto(){
+	public float getAlto(){
 		return alto;
 	}
 	
@@ -28,7 +28,7 @@ public abstract class EntidadColisionable extends Entidad implements Colisionabl
 	 * Devuelve el ancho de la entidad en pixeles
 	 * @return Ancho de la entidad en pixeles.
 	 */
-	public int getAncho(){
+	public float getAncho(){
 		return ancho;
 	}
 	

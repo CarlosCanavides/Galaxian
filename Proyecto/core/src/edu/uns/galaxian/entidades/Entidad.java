@@ -7,7 +7,7 @@ public abstract  class Entidad {
 
 	protected Vector2 posicion;
 
-	public Entidad(int xPos, int yPos){
+	public Entidad(float xPos, float yPos){
 		posicion = new Vector2(xPos, yPos);
 	}
 
@@ -28,7 +28,7 @@ public abstract  class Entidad {
 	 * @param yPos Valor en y de la nueva posicion de la entidad
 	 * @return Posicion anterior de la entidad
 	 */
-	public Vector2 setPosicion(int xPos, int yPos){
+	public Vector2 setPosicion(float xPos, float yPos){
 		Vector2 temp = posicion;
 		posicion = new Vector2(xPos, yPos);
 		return temp;

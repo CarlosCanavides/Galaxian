@@ -5,6 +5,8 @@ import java.util.List;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
+
 import edu.uns.galaxian.entidades.equipamiento.*;
 import edu.uns.galaxian.entidades.inanimadas.*;
 import edu.uns.galaxian.controladores.ControladorEnemigo;
@@ -45,7 +47,7 @@ public class Enemigo extends EntidadAutonoma{
 	 * @return Disparo realizado por el enemigo.
 	 */
 	public List<Disparo> disparar() {
-		return arma.disparar();
+		return arma.disparar(posicion.x,posicion.y,new Vector2(0,1));
 	}
 	
 	public static int getAnchoMaxEnemigo() {
