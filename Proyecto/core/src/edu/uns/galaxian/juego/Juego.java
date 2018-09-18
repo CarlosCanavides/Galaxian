@@ -37,6 +37,7 @@ public class Juego extends Game {
 	@Override
 	public void render () {
 		super.render();
+		
 	}
 	
 	@Override

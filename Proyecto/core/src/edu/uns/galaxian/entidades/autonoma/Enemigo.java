@@ -16,6 +16,7 @@ public class Enemigo extends EntidadAutonoma{
 	private static final int ANCHO_MAX = 32;
 	private static final int ALTO_MAX = 32;
 	
+	
 	private Texture textura;
 
 	private ControladorEnemigo controlador;
