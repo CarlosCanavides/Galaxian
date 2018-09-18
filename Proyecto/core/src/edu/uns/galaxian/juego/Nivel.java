@@ -72,13 +72,16 @@ public class Nivel extends ScreenAdapter {
         //Recibe el tiempo que paso del ultimo frame y lo guarda en una variable float contador
         //que siempre es menor a 1, y aumenta los segundos, cuando pasa los 59seg aumenta los min
         //TODO chequear si conviene un metodo auxiliar que calcule el tiempo (pasas el contador x param)
-        contador= Gdx.graphics.getDeltaTime();
-        if(contador<1) {seg++;}
-        if(seg==59) {
+        contador+= Gdx.graphics.getDeltaTime();
+        if(contador>=1) {
+        	contador=0;
+        	seg++;
+        }
+        if(seg==60) {
         	seg=0;
         	min++;
         }
-        if(min==59) {
+        if(min==60) {
         	min=0;
         	hora++;
         }
